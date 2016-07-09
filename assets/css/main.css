@@ -1187,6 +1187,15 @@
 		margin-bottom: 0;
 	}
 
+/* iFrame */
+.videoFrame {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: 320px;
+}
+
 /* Image */
 
 	.image {
