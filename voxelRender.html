@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<!--
+	Strongly Typed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Andre Rogers</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">        
+	</head>
+	<body class="no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="voxelRender.html">Voxel Rendering</a></h1>
+							<p>Thesis Project</p>
+
+                        <!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a class="icon fa-home" href="index.html"><span>Home</span></a></li>
+									<li>
+										<a href="#" class="icon fa-code"><span>Portfolio</span></a>
+										<ul>
+											<li><a href="voxelRender.html">Thesis - Voxel Rendering</a></li>
+											<li><a href="toonShader.html">ExtendedToon Shader</a></li>
+                                            <li><a href="codexEnjin.html">Codex Enjin</a></li>										</ul>
+									</li>
+								</ul>
+							</nav>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div id="main" class="container">
+						<div id="content">
+                            <article class="box post">
+                                <h2>Voxels</h2>
+                                <p><b><i>What are voxels?</i></b> A pixel can be understood to be an <b>(x, y)</b> co-ordinate on a 2D plane. A voxel is a pixel whose structure exists in the third dimension as well, i.e. it has depth (z axis). It represents a single value of a given object stored at an <b>(x, y, z)</b> co-ordinate in a 3D data structure. The value itself only specifies the color at that spatial position, its position is deduced by its neighbors and by the structure itself. Voxels can be rendered by either using volumetric data and rendering it with a direct volume rendering technique such as using slices or raycasting. Another alternative is extracting isosurfaces of a model which are computed and often rendered with the <b><i>marching cubes algorithm</i></b>.</p>
+                                
+                                <p>Voxels if processed and stored optimally can give rise to high LOD's at any or most ranges. Static models are suited well for this mode of rendering, but when these models need to be animated or transformed along complex tree heirachies there is an overhead to re-visualizing the data within the data structure as data needs to be shifted between positions in the structure to render the given animation. Voxel's are being moved. Thus, complexity increases even with algorithms more complex then the mundane naive and linear approaches.</p>
+                                
+                                <p>The project described here is based on a direct volume rendering approach via <b><i>rayvcasting</i></b>. It began with trying to store the data within an octree, and making and maintaining the sparse nature since all nodes of the octree were not occupied to represent a given volume. Due to the lack of time, the project was diverted to trying to create an interactive way to light the volume, and the effect pursued is a <strong><i>toon effect</i></strong>, the exaggeration of colors manipulated by a light source.</p>                                
+                                <iframe class="videoFrame" src="https://www.youtube.com/embed/lovKtK9_ygs" frameborder="0" allowfullscreen></iframe>
+                                <br>
+                                <h2>Interactive Volume Rendering</h2>
+                                <p>I augmented my implementation of the paper <b><i>"XToon: Extended Toon Shader" by Pascal Barla</i></b> and incorporated it into the rendering of voxels (Implementation can be found <a href="toonShader.html" target="_blank">here</a>) and used it as a <b><i>transfer function</i></b> to shade the volume. As described by the paper, a 2D texture is used as a lookup for shading where a computed <b><i>detail value</i> (D)</b> is understood as the y axis and the <b><i>lambertian model</i> (N.L)</b> is used as the x axis.</p>
+
+                                <p>Here, I compute the detail <b>(D)</b> as the density of the volume. A gradient is computed with the <b><i>sobel operator</i></b> and is applied per fragment of voxels to threshold, and its magnitude is applied per fragment. These two values are used for the transfer function look up.</p>
+                                
+                                <p>The perks of this paper which are <b><i>depth of field</i></b>, <b><i>aerial perspective</i></b>, <b><i>specular highlights</i></b>, and <b><i>backlighting</i></b> can be trasferred to rendering volumes. This requires adjusting the shader to work with volumetric data, and designing textures which will help exhibit the desired effect.</p>
+                                <iframe class="videoFrame" src="https://www.youtube.com/embed/_J5LxszzhnE" frameborder="0" allowfullscreen></iframe>
+                                <br>
+                                <h2>Future Work</h2>
+                                <p>The code for the project can be found <a href="#">here</a>. There are enumerable things that can be done to improve the project, possibly even correct it. There are some things that I would like to do to it which are as follows,
+                                    <ul>
+                                        <li>- Further optimizing and maintaining a <b><i>sparse octree</i></b>, which can shift data between its nodes at a feasible rate.</li>
+                                        <li>- To further bolster the profile of an optimized, efficient <b><i>sparse octree</i></b> I would like to try and implement a simple ball bouncing while maintaing the structure of the object all through the animation via the octree.</li>
+                                        <li>- Applying the above mentioned XToon implementation to other facets of volumetric rendering, possibly volumetric light or fog, or volumetric fluid.</li>
+                                    </ul>
+                                </p>
+                            </article>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
+						<header>
+							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
+						</header>
+						<div class="row">
+							<div class="6u 12u(mobile)">
+								<section>
+									<form method="post" action="#">
+										<div class="row 50%">
+											<div class="6u 12u(mobile)">
+												<input name="name" placeholder="Name" type="text" />
+											</div>
+											<div class="6u 12u(mobile)">
+												<input name="email" placeholder="Email" type="text" />
+											</div>
+										</div>
+										<div class="row 50%">
+											<div class="12u">
+												<textarea name="message" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row 50%">
+											<div class="12u">
+												<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>
+											</div>
+										</div>
+									</form>
+								</section>
+							</div>
+							<div class="6u 12u(mobile)">
+								<section>
+									<div class="row">
+										<div class="6u 12u(mobile)">
+											<ul class="icons">
+												<li class="icon fa-home">
+													1 University Parkway<br />
+													Chicago, IL 60484<br />
+													USA
+												</li>
+												<li class="icon fa-phone">
+													+1 (630) 974-8533
+												</li>
+												<li class="icon fa-envelope">
+													<a href="#">andrerogers21@gmail.com</a>
+												</li>
+											</ul>
+										</div>
+										<div class="6u 12u(mobile)">
+											<ul class="icons">
+												<li class="icon fa-linkedin">
+													<a href="https://www.linkedin.com/in/rogersandre">linkedin.com/rogersandre</a>
+												</li>
+												<li class="icon fa-github">
+													<a href="https://github.com/andrerogers">github.com/andrerogers</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div id="copyright" class="container">
+						<ul class="links">
+							<li>&copy; Andre Rogers. All rights reserved.</li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/skel-viewport.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
