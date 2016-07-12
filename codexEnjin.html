@@ -46,17 +46,33 @@
 					<div id="main" class="container">
 						<div id="content">
                             <article class="box post">
+                                <p>In my free time I enjoy learning and building applications with OpenGL. Whether its writing a shader, or trying to simulate a ball bouncing, water flowing, or a particle explosion. Writing code for these applications really amuses me, and challeneges me at the same time. And I do love writing it in C++, I can't wait for the day when I write C++ code without a single leak. Bug free code, through and through. Its striving for this almost impossible reality is what I feel will make me better at what I like doing.</p>
+                                
+                                <p>With that in mind, I want to slowly try and build an engine, which will help me when I want to create one of my hobby applications in OpenGL. I want it to be something that I can reuse and maybe put out there for people to critcize, propogate and use.</p>
+                                
                                 <h2>Core</h2>
-                                <p>Explain the progress so far on the core. The use of GLFW, OpenGL 4 context on Windows.</p>
+                                <p>I will be using OpenGL of version 3 and up. <a href="http://www.glfw.org/">GLFW</a> is used to create the application. It is a multi platform library for OpenGL. Currently I am using it to create a window, give it an OpenGL context and also receive inputs and events.</p>
                                 <br>
                                 <h2>Renderer</h2>
-                                <p>Explain the progress so far on the renderer - texture mapping, VBO's, VAO's, cubemapping, model loading, FBO's.</p>
+                                <p>
+                                    <ul>
+                                        <li>- It is currently a forward renderer.</li>
+                                        <li>- Models are imported via assimp and OpenGL neatly arranges it with Vertex Attribute Objects (VAO's) and Vertex Buffer Objects (VBO's).</li>
+                                        <li>- Textures are read via SOIL, and OpenGL assigns it a unit on the GPU.</li>
+                                        <li>- The scene is lit with lights, namely directional, point and spot lights.</li>
+                                    </ul>
+                                </p>
                                 <br>
                                 <h2>Physics</h2>
-                                <p>Explain the progress so far on the physics - to be started....</p>
+                                <p>In progress....</p>
                                 <br>
-                                <h2>Misc</h2>
-                                <p>Things learnt doing this project, tips, &amp; tricks.</p>                                
+                                <h2>References</h2>
+                                <p>Things learnt doing this project, tips, &amp; tricks.</p>
+                                <ul>
+                                    <li>http://gameprogrammingpatterns.com/contents.html</li>
+                                    <li>http://c.learncodethehardway.org/book/index.html</li>
+                                    <li>http://www.opengl-tutorial.org/</li>
+                                </ul>
                             </article>
 						</div>
 					</div>
